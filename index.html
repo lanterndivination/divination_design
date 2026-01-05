@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星読みの案内人 | 占い師ポートフォリオ</title>
+    <meta name="description" content="満天の星空の下、あなたの運命を照らす占い師の自己紹介サイトです。タロット、四柱推命、占星術で鑑定します。">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Config for Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif': ['"Zen Old Mincho"', 'serif'],
+                    },
+                    colors: {
+                        navy: {
+                            900: '#0a0e17', 
+                            800: '#111827',
+                        },
+                        lantern: {
+                            glow: '#fbbf24', // Amber 400
+                            core: '#f59e0b', // Amber 500
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'float-slow': 'float 8s ease-in-out 1s infinite',
+                        'twinkle': 'twinkle 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        twinkle: {
+                            '0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
+                            '50%': { opacity: '0.8', transform: 'scale(1.2)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for Starry Background & Lanterns */
+        body {
+            font-family: 'Zen Old Mincho', serif;
+            background: radial-gradient(circle at bottom, #1e293b 0%, #0a0e17 100%);
+            min-height: 100vh;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Stars Generator (CSS only approach for performance/simplicity) */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        /* Lantern Glow Effect */
+        .lantern-glow {
+            box-shadow: 0 0 20px 5px rgba(251, 191, 36, 0.4);
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="antialiased relative">
+
+    <!-- Background Stars (Generated via JS below for randomness) -->
+    <div id="stars-container" class="stars"></div>
+
+    <!-- Floating Background Lanterns -->
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+        <!-- Large lantern left -->
+        <div class="absolute top-[15%] left-[5%] animate-float opacity-80 rotate-3">
+            <div class="w-16 h-20 bg-gradient-to-b from-orange-900 to-transparent rounded-t-lg mx-auto opacity-50"></div> <!-- String -->
+            <div class="w-24 h-32 bg-gradient-to-b from-lantern-glow/40 to-lantern-core/10 rounded-full blur-md absolute top-10 left-0"></div> <!-- Glow -->
+            <div class="relative w-16 h-24 bg-gradient-to-b from-red-900 via-orange-700 to-amber-600 rounded-lg mx-auto shadow-lg border border-orange-500/30 flex items-center justify-center lantern-glow">
+                <div class="w-10 h-16 bg-yellow-200/50 blur-sm rounded-full"></div>
+            </div>
+        </div>
+        
+        <!-- Small lantern right -->
+        <div class="absolute bottom-[20%] right-[10%] animate-float-delayed opacity-60 -rotate-3">
+             <div class="w-24 h-32 bg-gradient-to-b from-lantern-glow/40 to-lantern-core/10 rounded-full blur-md absolute -top-4 -left-4"></div>
+            <div class="relative w-12 h-16 bg-gradient-to-b from-red-900 via-orange-700 to-amber-600 rounded-md mx-auto shadow-lg border border-orange-500/30 flex items-center justify-center lantern-glow">
+                <div class="w-6 h-10 bg-yellow-200/50 blur-sm rounded-full"></div>
+            </div>
+        </div>
+
+        <!-- Another lantern top right far -->
+        <div class="absolute top-[5%] right-[20%] animate-float-slow opacity-40 blur-[1px]">
+             <div class="w-20 h-28 bg-gradient-to-b from-lantern-glow/30 to-lantern-core/5 rounded-full blur-md absolute -top-2 -left-3"></div>
+            <div class="relative w-10 h-14 bg-gradient-to-b from-red-900 via-orange-700 to-amber-600 rounded-md mx-auto shadow-lg border border-orange-500/30 flex items-center justify-center lantern-glow">
+                <div class="w-5 h-8 bg-yellow-200/40 blur-sm rounded-full"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="relative z-10 flex flex-col items-center justify-center w-full max-w-5xl mx-auto px-6 py-12 md:py-24 space-y-32">
+        
+        <!-- Hero Section -->
+        <header class="flex flex-col items-center text-center space-y-8 mt-20 animate-float">
+            <div class="inline-block px-4 py-1.5 rounded-full border border-amber-500/50 bg-amber-900/10 backdrop-blur text-sm text-amber-200 tracking-widest mb-4">
+                ✦ 星と灯りの占い ✦
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-amber-100 via-yellow-200 to-orange-300 drop-shadow-[0_0_15px_rgba(251,191,36,0.3)]">
+                運命の灯火を<br>あなたに
+            </h1>
+            <p class="text-base md:text-lg text-slate-300 max-w-xl leading-relaxed tracking-wide">
+                暗闇の中に迷い込んだとき、<br>
+                星々の囁きとランタンの温かな光が、<br>
+                あなたの足元を優しく照らします。
+            </p>
+            <div class="pt-8">
+                <a href="#reservation" class="group relative inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white transition-all duration-300 bg-amber-600/80 rounded-full hover:bg-amber-500 hover:shadow-[0_0_30px_rgba(251,191,36,0.6)] hover:scale-105 active:scale-95 overflow-hidden">
+                     <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></span>
+                    <span>鑑定予約はこちら</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Divination Menu -->
+        <section id="menu" class="w-full">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-serif text-amber-100 flex items-center justify-center gap-4">
+                    <span class="text-amber-500 text-2xl">✦</span>
+                    占術メニュー
+                    <span class="text-amber-500 text-2xl">✦</span>
+                </h2>
+                <p class="text-slate-400 mt-4 text-sm tracking-widest">DIVINATION MENU</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Tarot Card -->
+                <article class="glass-card p-8 rounded-2xl text-center transform transition duration-500 hover:-translate-y-2 hover:border-amber-500/50 group">
+                    <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-indigo-900/50 text-3xl group-hover:scale-110 transition-transform duration-300">
+                        🔮
+                    </div>
+                    <h3 class="text-xl font-bold text-amber-200 mb-4">タロット</h3>
+                    <p class="text-slate-300 text-sm leading-7">
+                        運命の輪を回し、<br>
+                        あなたの進むべき道を照らします。
+                    </p>
+                </article>
+
+                <!-- Four Pillars Card -->
+                <article class="glass-card p-8 rounded-2xl text-center transform transition duration-500 hover:-translate-y-2 hover:border-amber-500/50 group">
+                    <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-indigo-900/50 text-3xl group-hover:scale-110 transition-transform duration-300">
+                        📜
+                    </div>
+                    <h3 class="text-xl font-bold text-amber-200 mb-4">四柱推命</h3>
+                    <p class="text-slate-300 text-sm leading-7">
+                        生年月日から導き出される、<br>
+                        あなただけの宿命を読み解きます。
+                    </p>
+                </article>
+
+                <!-- Astrology Card -->
+                <article class="glass-card p-8 rounded-2xl text-center transform transition duration-500 hover:-translate-y-2 hover:border-amber-500/50 group">
+                    <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-indigo-900/50 text-3xl group-hover:scale-110 transition-transform duration-300">
+                        ✨
+                    </div>
+                    <h3 class="text-xl font-bold text-amber-200 mb-4">占星術</h3>
+                    <p class="text-slate-300 text-sm leading-7">
+                        星の配置から、<br>
+                        今のあなたに必要なメッセージを届けます。
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Bio Section -->
+        <section id="bio" class="w-full glass-card p-8 md:p-12 rounded-2xl flex flex-col md:flex-row items-center gap-10">
+            <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-amber-500/30 flex-shrink-0 relative group">
+                 <!-- Placeholder for profile image, using a gradient/icon for now -->
+                 <div class="w-full h-full bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center text-6xl">
+                    🧙‍♀️
+                 </div>
+                 <div class="absolute inset-0 bg-amber-500/10 group-hover:bg-amber-500/0 transition duration-500"></div>
+            </div>
+            <div class="flex-1 text-center md:text-left">
+                <h2 class="text-2xl font-bold text-amber-100 mb-4">私について</h2>
+                <div class="space-y-4 text-slate-300 leading-relaxed font-light">
+                    <p>
+                        はじめまして。星空の下、心の迷いを解きほぐすお手伝いをしております。
+                    </p>
+                    <p>
+                        幼い頃から夜空を見上げることが好きで、星々の声に耳を傾けてきました。
+                        人生の岐路に立ったとき、ふと見上げた灯りのように、
+                        私の占いがあなたの足元を照らす道しるべとなれば幸いです。
+                    </p>
+                    <p>
+                        どんな些細な悩みでも構いません。
+                        ランタンの灯りに包まれたこの場所で、ゆっくりとお話をお聞かせください。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reservation / Footer -->
+        <footer id="reservation" class="w-full text-center pt-10 pb-20">
+            <div class="glass-card max-w-2xl mx-auto p-10 rounded-3xl border-t border-amber-500/20 shadow-[0_0_50px_-10px_rgba(251,191,36,0.1)]">
+                <h2 class="text-3xl font-serif text-amber-100 mb-6">鑑定のご予約</h2>
+                <p class="text-slate-400 mb-10">
+                    あなたのための特別な時間を、<br>ここから始めましょう。
+                </p>
+                <button class="px-10 py-4 text-lg font-bold text-amber-950 bg-gradient-to-r from-amber-200 to-yellow-400 rounded-full hover:from-amber-300 hover:to-yellow-500 hover:shadow-[0_0_20px_rgba(251,191,36,0.5)] transform hover:scale-105 transition-all duration-300" onclick="alert('予約ページへ移動します（仮）')">
+                    今すぐ予約する
+                </button>
+            </div>
+            
+            <div class="mt-16 text-slate-500 text-xs tracking-wider">
+                &copy; 2026 Starry Fortune Telling. All Rights Reserved.
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- JS for Stars -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const starsContainer = document.getElementById('stars-container');
+            const starCount = 100; // Number of stars
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random position
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                
+                // Random size
+                const size = Math.random() * 2 + 1; // 1px to 3px
+                
+                // Random animation delay
+                const delay = Math.random() * 4;
+
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.animation = `twinkle ${2 + Math.random() * 3}s ease-in-out ${delay}s infinite`;
+
+                starsContainer.appendChild(star);
+            }
+        });
+    </script>
+</body>
+</html>
