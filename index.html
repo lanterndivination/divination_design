@@ -274,14 +274,21 @@
                 <article class="premium-glass p-10 rounded-[20px] text-center hover-glow group">
                     <div class="w-16 h-16 mx-auto mb-8 flex items-center justify-center">
                         <!-- Tarot Cards Icon -->
-                        <svg class="w-10 h-10 text-champagne-300 group-hover:text-champagne-200 transition-colors duration-500"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8">
-                            <rect x="3" y="4" width="12" height="17" rx="1" />
-                            <path
-                                d="M7 4V3C7 2.44772 7.44772 2 8 2H19C19.5523 2 20 2.44772 20 3V17C20 17.5523 19.5523 18 19 18H18" />
-                            <path d="M9 9H9.01" stroke-width="2" stroke-linecap="round" />
-                            <path d="M9 13H9.01" stroke-width="2" stroke-linecap="round" />
-                            <path d="M9 17H9.01" stroke-width="2" stroke-linecap="round" />
+                        <!-- Tarot Cards Icon (Mystical Two Cards with Moon) -->
+                        <svg class="w-12 h-12 text-champagne-400 group-hover:text-champagne-300 transition-colors duration-500 drop-shadow-[0_0_8px_rgba(251,191,36,0.5)]"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                            <!-- Back Card -->
+                            <rect x="5" y="4" width="12" height="17" rx="1" transform="rotate(-6 11 12.5)"
+                                stroke-opacity="0.6" />
+                            <!-- Front Card -->
+                            <rect x="7" y="3" width="12" height="17" rx="1" transform="rotate(6 13 11.5)"
+                                class="fill-navy-950/50" />
+                            <!-- Moon Symbol on Front Card -->
+                            <path d="M12 8C10.5 8.5 9.5 10 9.5 11.5C9.5 13.5 11 15 13 15" stroke-linecap="round"
+                                transform="rotate(6 13 11.5) translate(2, 0)" />
+                            <!-- Stars decoration -->
+                            <path d="M17 6L17.5 7L18 6L17.5 5L17 6" fill="currentColor" stroke="none"
+                                transform="rotate(6 13 11.5)" />
                         </svg>
                     </div>
                     <h3 class="text-lg text-champagne-100 mb-6 tracking-widest font-medium">タロット</h3>
@@ -296,15 +303,17 @@
                 <article class="premium-glass p-10 rounded-[20px] text-center hover-glow group">
                     <div class="w-16 h-16 mx-auto mb-8 flex items-center justify-center">
                         <!-- Scroll/Script Icon -->
-                        <svg class="w-10 h-10 text-champagne-300 group-hover:text-champagne-200 transition-colors duration-500"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8">
-                            <path
-                                d="M8 2H19C20.1046 2 21 2.89543 21 4V20C21 21.1046 20.1046 22 19 22H8C6.89543 22 6 21.1046 6 20V4C6 2.89543 6.89543 2 8 2Z" />
-                            <path d="M10 6H17" stroke-linecap="round" />
-                            <path d="M10 10H17" stroke-linecap="round" />
-                            <path d="M10 14H17" stroke-linecap="round" />
-                            <path d="M10 18H15" stroke-linecap="round" />
-                            <path d="M6 6H4C3.44772 6 3 6.44772 3 7V17C3 17.5523 3.44772 18 4 18H6" />
+                        <!-- Four Pillars Icon (BaZi Geometric Octagon) -->
+                        <svg class="w-12 h-12 text-champagne-400 group-hover:text-champagne-300 transition-colors duration-500 drop-shadow-[0_0_8px_rgba(251,191,36,0.5)]"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                            <!-- Octagon Shape -->
+                            <path d="M12 2L19.07 4.93L22 12L19.07 19.07L12 22L4.93 19.07L2 12L4.93 4.93L12 2Z" />
+                            <!-- Inner Circle -->
+                            <circle cx="12" cy="12" r="6" />
+                            <!-- Cross Lines for Structure -->
+                            <path d="M12 2V6M12 18V22M2 12H6M18 12H22" stroke-opacity="0.6" />
+                            <!-- Center Dot -->
+                            <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none" />
                         </svg>
                     </div>
                     <h3 class="text-lg text-champagne-100 mb-6 tracking-widest font-medium">四柱推命</h3>
@@ -319,14 +328,18 @@
                 <article class="premium-glass p-10 rounded-[20px] text-center hover-glow group">
                     <div class="w-16 h-16 mx-auto mb-8 flex items-center justify-center">
                         <!-- Star Map Icon -->
-                        <svg class="w-10 h-10 text-champagne-300 group-hover:text-champagne-200 transition-colors duration-500"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8">
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="M12 2V22" />
-                            <path d="M2 12H22" />
-                            <path d="M4.92993 4.92993L19.07 19.07" />
-                            <path d="M19.07 4.92993L4.92993 19.07" />
-                            <circle cx="12" cy="12" r="3" fill="currentColor" fill-opacity="0.1" />
+                        <!-- Astrology Icon (Celestial Saturn Map) -->
+                        <svg class="w-12 h-12 text-champagne-400 group-hover:text-champagne-300 transition-colors duration-500 drop-shadow-[0_0_8px_rgba(251,191,36,0.5)]"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                            <!-- Saturn Body -->
+                            <circle cx="12" cy="12" r="5" />
+                            <!-- Ring -->
+                            <ellipse cx="12" cy="12" rx="10" ry="3.5" transform="rotate(-25 12 12)" />
+                            <!-- Small Moon/Star Orbiting -->
+                            <circle cx="18" cy="6" r="1" fill="currentColor" stroke="none" />
+                            <path d="M5 18L5.5 19L6 18L5.5 17L5 18" fill="currentColor" stroke="none" />
+                            <!-- Crescent Moon Element -->
+                            <path d="M20 16C19 16.5 18 16 18 15C18 14 18.5 13.5 19 13.5" stroke-linecap="round" />
                         </svg>
                     </div>
                     <h3 class="text-lg text-champagne-100 mb-6 tracking-widest font-medium">占星術</h3>
